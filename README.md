@@ -1,5 +1,5 @@
 <h4>Caso de prueba 2:</h4>
-<p>En el presente caso se optó por utilizar <b>JAX-RS</b> (javax.ws.rs) como especificación principal para la construcción del servicio y <b>GlassFish</b> (concretamente la version 5.1) como servidor de aplicaciones, dados los requisitos del desafío: excluir el uso de <b>Spring Boot</b>.</p>
+<p>En el presente caso se optó por utilizar <b>JAX-RS</b> (javax.ws.rs) como dependencia principal para la construcción del servicio y <b>GlassFish</b> (concretamente la version 5.1) como servidor de aplicaciones, dados los requisitos del desafío: excluir el uso de <b>Spring Boot</b>.</p>
 <p>JAX-RS forma parte del estándar <b>Java EE</b> y proporciona una forma clara, modular y robusta de construir servicios web RESTful, utilizando anotaciones como <code>@Path</code>, <code>@GET</code>, <code>@POST</code>, entre otras. Al tratarse de una tecnología nativa del entorno Java EE, evita dependencias externas y facilita una arquitectura limpia.</p>
 <h4>Instrucciones:</h4>
 <ul>
