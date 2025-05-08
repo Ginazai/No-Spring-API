@@ -1,0 +1,84 @@
+CREATE TABLE Roles (
+    rol_ID BIGINT IDENTITY(1,1) PRIMARY KEY,
+    rol NVARCHAR(255) NOT NULL
+);
+CREATE TABLE Usuarios (
+    usuario_ID BIGINT IDENTITY(1,1) PRIMARY KEY,
+    nombre_completo NVARCHAR(255) NOT NULL,
+    username NVARCHAR(50) NOT NULL,
+    clave NVARCHAR(255) NOT NULL,
+    fecha_de_creacion DATETIME2,
+    ultimo_acceso DATETIME2,
+    activo BIT NOT NULL
+);
+CREATE TABLE Usuario_Roles (
+    usuario_ID BIGINT NOT NULL,
+    rol_ID BIGINT NOT NULL,
+    PRIMARY KEY (usuario_ID, rol_ID),
+    FOREIGN KEY (usuario_ID) REFERENCES Usuarios(usuario_ID) ON DELETE CASCADE,
+    FOREIGN KEY (rol_ID) REFERENCES Roles(rol_ID) ON DELETE CASCADE
+);
+CREATE TABLE Categorias (
+    categoria_ID BIGINT IDENTITY(1,1) PRIMARY KEY,
+    nombre NVARCHAR(255) NOT NULL,
+    fecha_de_creacion DATETIME2,
+    ultima_actualizacion DATETIME2,
+    activo BIT NOT NULL
+);
+CREATE TABLE Productos (
+    producto_ID BIGINT IDENTITY(1,1) PRIMARY KEY,
+    nombre NVARCHAR(255) NOT NULL,
+    precio FLOAT NOT NULL,
+    tags TEXT,
+    fecha_de_creacion DATETIME2,
+    ultima_actualizacion DATETIME2,
+    activo BIT NOT NULL
+);
+CREATE TABLE Productos_Categorias (
+    producto_ID BIGINT NOT NULL,
+    categoria_ID BIGINT NOT NULL,
+    PRIMARY KEY (producto_ID, categoria_ID),
+    FOREIGN KEY (producto_ID) REFERENCES Productos(producto_ID) ON DELETE CASCADE,
+    FOREIGN KEY (categoria_ID) REFERENCES Categorias(categoria_ID) ON DELETE CASCADE
+);
+-- 1: nombre de usuario unico / indexing por usos constantes
+ALTER TABLE Usuarios ADD CONSTRAINT uq_username UNIQUE(username); 
+CREATE INDEX idx_usuario_nombre ON Usuarios(username); 
+CREATE INDEX idx_categoria_nombre ON Categorias(nombre);
+--2: Inserts:
+INSERT INTO Roles(rol) VALUES ('ROLE_ADMIN');
+INSERT INTO Roles(rol) VALUES ('ROLE_USER');
+INSERT INTO Productos(nombre,precio,tags,fecha_de_creacion,ultima_actualizacion,activo) VALUES ('test product',10.99,'sample,tag',getutcdate(),getutcdate(),1);
+INSERT INTO Categorias(nombre,fecha_de_creacion,ultima_actualizacion,activo) VALUES ('test category',getutcdate(),getutcdate(),1);
+INSERT INTO Categorias(nombre,fecha_de_creacion,ultima_actualizacion,activo) VALUES ('test category 2',getutcdate(),getutcdate(),1);
+INSERT INTO Productos_categorias(producto_id,categoria_id) VALUES (1,1);
+--3: IMPORTANTE: ejecute el trigger luego de que existan roles
+--Trigger para asignar usuarios a rol por defecto
+CREATE TRIGGER trg_insert_usuario_asigna_rol
+ON usuarios
+AFTER INSERT
+AS
+BEGIN
+    SET NOCOUNT ON;
+    DECLARE @rol_id INT;
+    SELECT TOP 1 @rol_id = rol_id FROM roles WHERE rol = 'ROLE_USER';
+    IF @rol_id IS NOT NULL
+    BEGIN
+        INSERT INTO usuario_roles (usuario_id, rol_id)
+        SELECT usuario_id, @rol_id
+        FROM inserted;
+    END
+    ELSE
+    BEGIN
+        RAISERROR('El rol "ROL_USER" no existe en la tabla roles.', 16, 1);
+    END
+END;
+--4: LUEGO de registrarse, ejecutar este query para conferir permisos de admin:
+BEGIN
+    DECLARE @usuario BIGINT
+    DECLARE @rol BIGINT
+    SELECT @usuario = usuario_ID FROM usuarios WHERE username = 'admin'
+    SELECT @rol = rol_id FROM roles WHERE rol = 'ROLE_ADMIN'
+    INSERT INTO usuario_roles(usuario_id,rol_id)
+    VALUES (@usuario,@rol)
+END

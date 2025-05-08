@@ -57,7 +57,7 @@ public class UserService {
 	public User actualizarUsuario(Long id, User updatedUser) {
 		User existingUser = entityManager.find(User.class, id);
 		if (existingUser == null) {
-			 throw new IllegalArgumentException("Product not found with ID: " + id);
+			 throw new IllegalArgumentException("User not found with ID: " + id);
 		}
 		existingUser.setName(updatedUser.getName() != null ? updatedUser.getName() 
 				: existingUser.getName());
@@ -71,7 +71,8 @@ public class UserService {
 				: existingUser.getCreate_date());
 		existingUser.setLast_access(updatedUser.getLast_access() != null ? updatedUser.getLast_access()
 				: existingUser.getLast_access());
-		return entityManager.merge(existingUser);
+		entityManager.persist(existingUser);
+		return existingUser;
 	}
 
 	

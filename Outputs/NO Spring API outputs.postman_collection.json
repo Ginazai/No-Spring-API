@@ -1,0 +1,208 @@
+{
+	"info": {
+		"_postman_id": "60ceaae4-3083-4f55-b8eb-8de1124bfffc",
+		"name": "NO Spring API outputs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "42447002"
+	},
+	"item": [
+		{
+			"name": "productos",
+			"item": [
+				{
+					"name": "POST productos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"product 1\",\r\n    \"price\" : 40.99,\r\n    \"active\" : true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://msi:9090/API/productos"
+					},
+					"response": []
+				},
+				{
+					"name": "GET productos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://msi:9090/API/productos"
+					},
+					"response": []
+				},
+				{
+					"name": "GET ONE productos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://msi:9090/API/productos/1"
+					},
+					"response": []
+				},
+				{
+					"name": "PUT productos",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"updated product name\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://msi:9090/API/productos/1"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE productos",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://msi:9090/API/productos/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "categorias",
+			"item": [
+				{
+					"name": "POST categorias",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"sample category\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://msi:9090/API/categorias"
+					},
+					"response": []
+				},
+				{
+					"name": "GET categorias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://msi:9090/API/categorias"
+					},
+					"response": []
+				},
+				{
+					"name": "GET ONE categorias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://msi:9090/API/categorias/1"
+					},
+					"response": []
+				},
+				{
+					"name": "PUT categorias",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"updated category name\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://msi:9090/API/categorias/1"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE categorias",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://msi:9090/API/categorias/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "usuarios",
+			"item": [
+				{
+					"name": "GET usuarios",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://msi:9090/API/usuarios"
+					},
+					"response": []
+				},
+				{
+					"name": "POST usuarios",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"sample name\",\r\n    \"username\" : \"new user\",\r\n    \"password\" : \"abc123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://msi:9090/API/usuarios"
+					},
+					"response": []
+				},
+				{
+					"name": "PUT usuarios",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"sample updated name\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://msi:9090/API/usuarios/2"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE usuarios",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "http://msi:9090/API/usuarios/2"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

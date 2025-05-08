@@ -21,6 +21,7 @@
         <servlet-name>jersey-servlet</servlet-name>
         <url-pattern>/*</url-pattern>
     </servlet-mapping>
+    <!--  
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>REST API</web-resource-name>
@@ -31,4 +32,5 @@
             <http-method>DELETE</http-method>
         </web-resource-collection>
     </security-constraint>
+    -->
 </web-app>
