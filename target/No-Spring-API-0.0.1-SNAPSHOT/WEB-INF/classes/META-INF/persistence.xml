@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             version="2.1"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+             http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="myUnit" transaction-type="JTA">
+  	<jta-data-source>jdbc/APIDatasource</jta-data-source>
+  	<!-- 
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+    -->
+
+    <class>com.dashboard.Entities.User</class>
+    <class>com.dashboard.Entities.Role</class>
+    <class>com.dashboard.Entities.Product</class>
+    <class>com.dashboard.Entities.ProductCategory</class>    
+	
+    <properties>
+      <property name="jwt.secret" value="mi_clave_secreta_de_suficientes_bits_como_se_indica"/>
+      <property name="hibernate.default_schema" value="dbo"/>
+	  <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/>
+	  <property name="hibernate.id.new_generator_mappings" value="false"/>
+      <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost:1433;databaseName=Test;encrypt=false;trustServerCertificate=true"/>
+      <property name="javax.persistence.jdbc.user" value="admin"/>
+      <property name="javax.persistence.jdbc.password" value="@bc123"/>
+	  <property name="hibernate.show_sql" value="true"/>
+	  <property name="hibernate.format_sql" value="true"/>
+	   <property name="hibernate.use_sql_comments" value="true"/>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServer2012Dialect"/>
+      <property name="hibernate.hbm2ddl.auto" value="create"/>
+    </properties>
+  </persistence-unit>
+</persistence>

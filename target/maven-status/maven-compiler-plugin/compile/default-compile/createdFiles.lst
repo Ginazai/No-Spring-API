@@ -1,0 +1,16 @@
+com\dashboard\Entities\ProductCategory.class
+com\dashboard\util\JwtUtil.class
+com\dashboard\app\MainApp.class
+com\dashboard\util\PasswordUtil.class
+com\dashboard\util\AuthFilter.class
+com\dashboard\Entities\User.class
+com\dashboard\Services\RoleService.class
+com\dashboard\Entities\Role.class
+com\dashboard\Services\UserService.class
+com\dashboard\REST\CategoryResource.class
+com\dashboard\Entities\Product.class
+com\dashboard\Services\ProductService.class
+com\dashboard\Services\CategoryService.class
+com\dashboard\REST\MainResource.class
+com\dashboard\REST\ProductResource.class
+com\dashboard\REST\UserResource.class
