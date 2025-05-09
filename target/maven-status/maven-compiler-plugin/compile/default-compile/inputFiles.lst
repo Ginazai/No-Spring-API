@@ -4,8 +4,10 @@ D:\Users\FakeR\eclipse-workspace\spring-workspaces\RESTAPI\No-Spring-API\src\mai
 D:\Users\FakeR\eclipse-workspace\spring-workspaces\RESTAPI\No-Spring-API\src\main\java\com\dashboard\Entities\CredentialDTO.java
 D:\Users\FakeR\eclipse-workspace\spring-workspaces\RESTAPI\No-Spring-API\src\main\java\com\dashboard\Entities\Product.java
 D:\Users\FakeR\eclipse-workspace\spring-workspaces\RESTAPI\No-Spring-API\src\main\java\com\dashboard\Entities\ProductCategory.java
+D:\Users\FakeR\eclipse-workspace\spring-workspaces\RESTAPI\No-Spring-API\src\main\java\com\dashboard\Entities\RegisterDTO.java
 D:\Users\FakeR\eclipse-workspace\spring-workspaces\RESTAPI\No-Spring-API\src\main\java\com\dashboard\Entities\Role.java
 D:\Users\FakeR\eclipse-workspace\spring-workspaces\RESTAPI\No-Spring-API\src\main\java\com\dashboard\Entities\User.java
+D:\Users\FakeR\eclipse-workspace\spring-workspaces\RESTAPI\No-Spring-API\src\main\java\com\dashboard\REST\AuthResource.java
 D:\Users\FakeR\eclipse-workspace\spring-workspaces\RESTAPI\No-Spring-API\src\main\java\com\dashboard\REST\CategoryResource.java
 D:\Users\FakeR\eclipse-workspace\spring-workspaces\RESTAPI\No-Spring-API\src\main\java\com\dashboard\REST\ProductResource.java
 D:\Users\FakeR\eclipse-workspace\spring-workspaces\RESTAPI\No-Spring-API\src\main\java\com\dashboard\REST\UserResource.java
@@ -15,5 +17,4 @@ D:\Users\FakeR\eclipse-workspace\spring-workspaces\RESTAPI\No-Spring-API\src\mai
 D:\Users\FakeR\eclipse-workspace\spring-workspaces\RESTAPI\No-Spring-API\src\main\java\com\dashboard\Services\RoleService.java
 D:\Users\FakeR\eclipse-workspace\spring-workspaces\RESTAPI\No-Spring-API\src\main\java\com\dashboard\Services\UserService.java
 D:\Users\FakeR\eclipse-workspace\spring-workspaces\RESTAPI\No-Spring-API\src\main\java\com\dashboard\util\JWTFilter.java
-D:\Users\FakeR\eclipse-workspace\spring-workspaces\RESTAPI\No-Spring-API\src\main\java\com\dashboard\util\JwtUtil.java
 D:\Users\FakeR\eclipse-workspace\spring-workspaces\RESTAPI\No-Spring-API\src\main\java\com\dashboard\util\PasswordUtil.java

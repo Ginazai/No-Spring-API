@@ -9,8 +9,7 @@ import com.dashboard.util.JWTFilter;
 @ApplicationPath("/")
 public class JerseyConfig extends ResourceConfig {
     public JerseyConfig() {
-        packages("com.dashboard.REST");
+    	packages("com.dashboard.REST", "com.dashboard.util");
         register(JWTFilter.class);
     }
 }
-

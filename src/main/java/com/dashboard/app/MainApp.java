@@ -1,15 +1,11 @@
 package com.dashboard.app;
 
 import com.dashboard.Entities.User;
-import com.dashboard.Services.RoleService;
 import com.dashboard.util.PasswordUtil;
 import com.dashboard.Entities.Role;
 import java.time.LocalDateTime;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-
-import javax.inject.Inject;
 import javax.persistence.*;
 
 public class MainApp {

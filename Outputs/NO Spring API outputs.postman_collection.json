@@ -23,7 +23,7 @@
 								}
 							}
 						},
-						"url": "http://msi:9090/API/productos"
+						"url": "http://msi:9090/productos"
 					},
 					"response": []
 				},
@@ -32,7 +32,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://msi:9090/API/productos"
+						"url": "http://msi:9090/productos"
 					},
 					"response": []
 				},
@@ -41,7 +41,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://msi:9090/API/productos/1"
+						"url": "http://msi:9090/productos/1"
 					},
 					"response": []
 				},
@@ -59,7 +59,7 @@
 								}
 							}
 						},
-						"url": "http://msi:9090/API/productos/1"
+						"url": "http://msi:9090/productos/1"
 					},
 					"response": []
 				},
@@ -68,7 +68,7 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "http://msi:9090/API/productos/1"
+						"url": "http://msi:9090/productos/1"
 					},
 					"response": []
 				}
@@ -84,14 +84,14 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\" : \"sample category\"\r\n}",
+							"raw": "{\r\n    \"name\" : \"sample new category\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "http://msi:9090/API/categorias"
+						"url": "http://msi:9090/categorias"
 					},
 					"response": []
 				},
@@ -100,7 +100,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://msi:9090/API/categorias"
+						"url": "http://msi:9090/categorias"
 					},
 					"response": []
 				},
@@ -109,7 +109,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://msi:9090/API/categorias/1"
+						"url": "http://msi:9090/categorias/1"
 					},
 					"response": []
 				},
@@ -127,7 +127,7 @@
 								}
 							}
 						},
-						"url": "http://msi:9090/API/categorias/1"
+						"url": "http://msi:9090/categorias/1"
 					},
 					"response": []
 				},
@@ -136,7 +136,7 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "http://msi:9090/API/categorias/1"
+						"url": "http://msi:9090/categorias/1"
 					},
 					"response": []
 				}
@@ -146,38 +146,110 @@
 			"name": "usuarios",
 			"item": [
 				{
-					"name": "GET usuarios",
+					"name": "POST registro",
 					"request": {
 						"auth": {
 							"type": "noauth"
 						},
-						"method": "GET",
-						"header": [],
-						"url": "http://msi:9090/API/usuarios"
-					},
-					"response": []
-				},
-				{
-					"name": "POST usuarios",
-					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\" : \"sample name\",\r\n    \"username\" : \"new user\",\r\n    \"password\" : \"abc123\"\r\n}",
+							"raw": "{\r\n    \"name\" : \"nuevo usuario\",\r\n    \"username\" : \"username123\",\r\n    \"password\" : \"abc123\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "http://msi:9090/API/usuarios"
+						"url": "http://msi:9090/registro"
+					},
+					"response": []
+				},
+				{
+					"name": "POST login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"admin\",\r\n    \"password\" : \"@bc123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://msi:9090/login"
+					},
+					"response": []
+				},
+				{
+					"name": "GET usuarios",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VybmFtZSIsImlhdCI6MTc0Njc2NzAzNiwiZXhwIjoxNzQ2NzY3NjM2fQ.VwHM1EKQHutkqd1MGXpkovOtQ0NjFXANfLajVhy0cuw"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://msi:9090/usuarios"
+					},
+					"response": []
+				},
+				{
+					"name": "GET ONE usuarios",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VybmFtZSIsImlhdCI6MTc0Njc2NzAzNiwiZXhwIjoxNzQ2NzY3NjM2fQ.VwHM1EKQHutkqd1MGXpkovOtQ0NjFXANfLajVhy0cuw"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://msi:9090/usuarios/1"
+					},
+					"response": []
+				},
+				{
+					"name": "POST usuarios",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VybmFtZSIsImlhdCI6MTc0Njc2NzAzNiwiZXhwIjoxNzQ2NzY3NjM2fQ.VwHM1EKQHutkqd1MGXpkovOtQ0NjFXANfLajVhy0cuw"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"new name\",\r\n    \"username\" : \"username_new\",\r\n    \"password\" : \"new_pass\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://msi:9090/usuarios"
 					},
 					"response": []
 				},
 				{
 					"name": "PUT usuarios",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VybmFtZSIsImlhdCI6MTc0Njc2NzAzNiwiZXhwIjoxNzQ2NzY3NjM2fQ.VwHM1EKQHutkqd1MGXpkovOtQ0NjFXANfLajVhy0cuw"
+							}
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
@@ -189,16 +261,22 @@
 								}
 							}
 						},
-						"url": "http://msi:9090/API/usuarios/2"
+						"url": "http://msi:9090/usuarios/2"
 					},
 					"response": []
 				},
 				{
 					"name": "DELETE usuarios",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VybmFtZSIsImlhdCI6MTc0Njc2NzAzNiwiZXhwIjoxNzQ2NzY3NjM2fQ.VwHM1EKQHutkqd1MGXpkovOtQ0NjFXANfLajVhy0cuw"
+							}
+						},
 						"method": "DELETE",
 						"header": [],
-						"url": "http://msi:9090/API/usuarios/2"
+						"url": "http://msi:9090/usuarios/2"
 					},
 					"response": []
 				}

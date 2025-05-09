@@ -25,5 +25,3 @@
 		<b>Nota:</b> Las direcciones puede variar segun la maquina en que se ejecute ya que Glassfish utiliza el formato <code>[domain]:[port]/[application name]</code>, el mismo se encuentra en el panel de control de Glassfish en <code>Applications > [Nombre de la aplicacion] > Lauch</code>
 	</li>
 </ul>
-<br>
-<p><b>Nota: Por limitaciones de tiempo, no fue posible implementar la autenticacion.</b></p>

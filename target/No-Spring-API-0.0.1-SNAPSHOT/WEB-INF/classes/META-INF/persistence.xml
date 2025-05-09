@@ -4,19 +4,16 @@
              version="2.1"
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
              http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-  <persistence-unit name="myUnit" transaction-type="RESOURCE_LOCAL">
+  <persistence-unit name="myUnit" transaction-type="JTA">
     <description>Persistence Unit for JPA</description>
-  	
-  	<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+  	<jta-data-source>jdbc/APIDatasource</jta-data-source>
   	<!-- 
-   <jta-data-source>jdbc/APIDatasource</jta-data-source>
+   <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     -->
-
     <class>com.dashboard.Entities.User</class>
     <class>com.dashboard.Entities.Role</class>
     <class>com.dashboard.Entities.Product</class>
     <class>com.dashboard.Entities.ProductCategory</class>    
-	
     <properties>
       <property name="jwt.secret" value="mi_clave_secreta_de_suficientes_bits_como_se_indica"/>
       <property name="hibernate.default_schema" value="dbo"/>
