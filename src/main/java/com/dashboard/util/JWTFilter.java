@@ -6,16 +6,43 @@ import javax.ws.rs.Priorities;
 import javax.ws.rs.container.*;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
+
+import org.hibernate.annotations.common.util.impl.LoggerFactory;
+
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 @Provider
 @Priority(Priorities.AUTHENTICATION)
 public class JWTFilter implements ContainerRequestFilter {
-
+	private static final Logger logger = Logger.getLogger(JWTFilter.class.getName());
+	
     private static final String AUTH_HEADER = "Authorization";
     private static final String BEARER_PREFIX = "Bearer ";
     private static final String SECRET_KEY = "clave_secreta_de_128bits_de_longitud"; // Cambia esto por tu clave secreta
+    static {
+        try {
+            // Crear nombre del archivo con fecha/hora
+            String fecha = new SimpleDateFormat("yyyy-MM-dd_HH").format(new Date());
+            String nombreArchivo = "../logs/auth-log-" + fecha + ".log";
 
+            // Crear el FileHandler
+            FileHandler fileHandler = new FileHandler(nombreArchivo, true);
+            fileHandler.setFormatter(new SimpleFormatter());
+
+            // Asignar el nuevo handler
+            logger.addHandler(fileHandler);
+            logger.setLevel(Level.ALL);
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Error al inicializar el logger", e);
+        }
+    }
     @Override
     public void filter(ContainerRequestContext requestContext) throws IOException {
     	String path = requestContext.getUriInfo().getPath();
@@ -27,7 +54,7 @@ public class JWTFilter implements ContainerRequestFilter {
         System.out.println("Authorization Header: " + authHeader);
 
         if (authHeader == null || !authHeader.startsWith(BEARER_PREFIX)) {
-            System.out.println("Authorization header is missing or invalid");
+        	logger.severe("Error: Header no contiene \"Bearer\" o es nulo");
             requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).build());
             return;
         }
@@ -38,9 +65,8 @@ public class JWTFilter implements ContainerRequestFilter {
                     .setSigningKey(SECRET_KEY.getBytes())
                     .build();
             jwtParser.parseClaimsJws(token);
-            System.out.println("Token is valid");
         } catch (JwtException e) {
-            System.out.println("Invalid token: " + e.getMessage());
+            logger.severe("Error: Invalid token: " + e.getMessage());
             requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).build());
         }
     }
